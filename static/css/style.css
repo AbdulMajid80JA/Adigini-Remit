@@ -1,0 +1,466 @@
+/* =========================================================================
+   1. GLOBAL RESET & BASE RULES
+   ========================================================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #06111f;
+    color: white;
+    overflow-x: hidden;
+}
+
+.bg-blur {
+    position: fixed;
+    width: 600px;
+    height: 600px;
+    background: #00ffcc;
+    filter: blur(180px);
+    opacity: 0.15;
+    top: -150px;
+    left: -150px;
+    pointer-events: none;
+}
+
+/* =========================================================================
+   2. DESKTOP NAVIGATION STYLE
+   ========================================================================= */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 60px;
+    position: relative;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 32px;
+    font-weight: bold;
+    color: #00ffcc;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.login-btn {
+    background: #00ffcc;
+    color: #06111f !important;
+    padding: 12px 22px;
+    border-radius: 30px;
+}
+
+.mobile-toggle {
+    display: none; /* Hidden on desktop screens */
+    font-size: 35px;
+    cursor: pointer;
+    color: #00ffcc;
+}
+
+/* =========================================================================
+   3. HERO DISPLAY SECTION
+   ========================================================================= */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 80px 60px;
+}
+
+.hero-left {
+    width: 50%;
+}
+
+.hero-left h1 {
+    font-size: 70px;
+    line-height: 1.1;
+}
+
+.hero-left p {
+    margin-top: 25px;
+    color: #9fb1c8;
+    font-size: 20px;
+    line-height: 1.7;
+}
+
+.security-badges {
+    margin-top: 30px;
+}
+
+.security-badges span {
+    display: inline-block;
+    padding: 12px 20px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 30px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+/* --- Credit Card Mockup UI --- */
+.card-ui {
+    width: 400px;
+    height: 240px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 25px;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    padding: 30px;
+    box-shadow: 0 0 40px rgba(0, 255, 204, 0.2);
+}
+
+.chip {
+    width: 70px;
+    height: 50px;
+    background: gold;
+    border-radius: 10px;
+}
+
+.card-number {
+    margin-top: 50px;
+    font-size: 32px;
+    letter-spacing: 4px;
+}
+
+.card-holder {
+    margin-top: 25px;
+    color: #a8bdd6;
+}
+
+/* =========================================================================
+   4. PAYMENT FORM CONVERSION MODAL
+   ========================================================================= */
+.payment-section {
+    padding: 40px 60px;
+}
+
+.payment-form {
+    max-width: 600px;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.06);
+    padding: 40px;
+    border-radius: 25px;
+}
+
+.payment-form h2 {
+    margin-bottom: 25px;
+    font-size: 40px;
+}
+
+.payment-form input,
+.payment-form select {
+    width: 100%;
+    padding: 16px;
+    margin-bottom: 18px;
+    background: #0d1c2f;
+    border: none;
+    border-radius: 14px;
+    color: white;
+    outline: none;
+}
+
+.payment-form button {
+    width: 100%;
+    padding: 18px;
+    border: none;
+    border-radius: 15px;
+    background: linear-gradient(90deg, #00ffcc, #00c896);
+    color: #06111f;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.fees-box {
+    background: #0c1625;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.fees-box div {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+/* =========================================================================
+   5. LIVE RATES GRID MODULE
+   ========================================================================= */
+.rates {
+    padding: 80px 60px;
+}
+
+.rates h2 {
+    font-size: 50px;
+    margin-bottom: 40px;
+}
+
+.rate-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.rate-card {
+    background: rgba(255, 255, 255, 0.06);
+    padding: 30px;
+    border-radius: 20px;
+}
+
+.rate-card h3 {
+    font-size: 32px;
+    color: #00ffcc;
+}
+
+.rate-card p {
+    margin-top: 15px;
+    font-size: 24px;
+}
+
+/* =========================================================================
+   6. PLATFORM DATA METRICS & TRUST SECTIONS
+   ========================================================================= */
+.stats-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 60px;
+}
+
+.stat-card {
+    background: rgba(255, 255, 255, 0.06);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.stat-card h2 {
+    font-size: 45px;
+    color: #00ffcc;
+}
+
+.stat-card p {
+    margin-top: 10px;
+    color: #b4c7de;
+}
+
+.trust-section {
+    padding: 80px 60px;
+}
+
+.trust-section h2 {
+    font-size: 50px;
+    margin-bottom: 40px;
+}
+
+.trust-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.trust-card {
+    background: rgba(255, 255, 255, 0.06);
+    padding: 35px;
+    border-radius: 20px;
+}
+
+.trust-card h3 {
+    font-size: 30px;
+    margin-bottom: 20px;
+    color: #00ffcc;
+}
+
+.trust-card p {
+    color: #aabed7;
+    line-height: 1.8;
+}
+
+/* =========================================================================
+   7. AUXILIARY / ADMIN LAYOUTS
+   ========================================================================= */
+.simple-page {
+    padding: 100px 60px;
+}
+
+.simple-page h1 {
+    font-size: 60px;
+    margin-bottom: 30px;
+}
+
+.simple-page p {
+    color: #b6c8dc;
+    line-height: 2;
+    font-size: 20px;
+}
+
+.admin-login-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.admin-login-form {
+    width: 100%;
+    max-width: 500px;
+    background: rgba(255, 255, 255, 0.06);
+    padding: 40px;
+    border-radius: 25px;
+}
+
+.admin-login-form h1 {
+    margin-bottom: 25px;
+    font-size: 45px;
+}
+
+.admin-login-form input {
+    width: 100%;
+    padding: 18px;
+    margin-bottom: 20px;
+    background: #0d1c2f;
+    border: none;
+    border-radius: 15px;
+    color: white;
+    outline: none;
+}
+
+.admin-login-form button {
+    width: 100%;
+    padding: 18px;
+    border: none;
+    border-radius: 15px;
+    background: #00ffcc;
+    color: #06111f;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* =========================================================================
+   8. FOOTER TERMINAL AREA & FLOATING ACTIONS
+   ========================================================================= */
+footer {
+    padding: 60px;
+    text-align: center;
+    background: #081321;
+    margin-top: 80px;
+}
+
+footer h2 {
+    font-size: 40px;
+    color: #00ffcc;
+}
+
+footer p {
+    margin-top: 15px;
+    color: #aebfd5;
+}
+
+.footer-links {
+    margin-top: 25px;
+}
+
+.footer-links a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+}
+
+.whatsapp-btn {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    background: #25D366;
+    color: white;
+    padding: 18px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* =========================================================================
+   9. SINGLE CLEAN MOBILE MEDIA QUERY (CRITICAL FIX)
+   ========================================================================= */
+@media (max-width: 900px) {
+    nav {
+        padding: 20px 30px;
+    }
+
+    .mobile-toggle {
+        display: block; /* Show menu icon on small devices */
+    }
+
+    /* Standardizes responsive mobile positioning dimensions */
+    .menu {
+        display: none; /* Hide menu content by default */
+        flex-direction: column;
+        position: absolute;
+        top: 100%; /* Dropdown attaches right beneath navbar */
+        left: 0;
+        width: 100%;
+        background: #091728;
+        padding: 30px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+        gap: 20px;
+        z-index: 999;
+    }
+
+    /* Toggled state script targets this hook class */
+    .menu.active {
+        display: flex !important;
+    }
+
+    .menu a {
+        margin-left: 0;
+        width: 100%;
+        font-size: 18px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .hero {
+        flex-direction: column;
+        padding: 40px 30px;
+    }
+
+    .hero-left,
+    .hero-right {
+        width: 100%;
+    }
+
+    .hero-left h1 {
+        font-size: 45px;
+    }
+
+    .card-ui {
+        width: 100%;
+        margin-top: 40px;
+    }
+
+    .payment-section,
+    .rates,
+    .trust-section,
+    .stats-section {
+        padding: 40px 30px;
+    }
+}
