@@ -1,0 +1,15 @@
+# Ignore the virtual environment folder completely
+venv/
+ENV/
+env/
+
+# Ignore your local database and backup snapshots
+database.db
+backups/
+
+# Ignore your secret API keys and passwords
+.env
+
+# Ignore temporary python cache files
+__pycache__/
+*.pyc
