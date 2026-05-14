@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdiginiRemit</title>
+    <script src="paystack.co"></script>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+    <div class="bg-blur"></div>
+
+    <nav>
+        <div class="logo">
+            Adigini Remit
+        </div>
+        <div class="mobile-toggle" onclick="toggleMenu()">
+            ☰
+        </div>
+        <div class="menu" id="menu">
+            <a href="/">Home</a>
+            <a href="#rates">Rates</a>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+            <a href="/support">Support</a>
+            <a class="login-btn" href="/admin-login">Admin Login</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-left">
+            <h1>Send Money Home Instantly.</h1>
+            <p>Fast remittance platform for Africans abroad. Trusted rates. Low fees. Instant support.</p>
+            <div class="security-badges">
+                <span>SSL Secure</span>
+                <span>OTP Verified</span>
+                <span>Paystack Protected</span>
+            </div>
+        </div>
+
+        <div class="hero-right">
+            <div class="card-ui">
+                <div class="chip"></div>
+                <div class="card-number">**** **** **** 2458</div>
+                <div class="card-holder">ADIGINI-REMIT PAY</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="payment-section">
+        <form action="/pay" method="POST" class="payment-form">
+            <h2>Transfer Money</h2>
+            
+            <input type="text" name="sender_name" placeholder="Sender Name" required>
+            <input type="text" name="sender_phone" placeholder="Sender Phone" required>
+            <input type="text" name="recipient_name" placeholder="Recipient Name" required>
+            <input type="text" name="recipient_phone" placeholder="Recipient Phone" required>
+            
+            <select name="currency">
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="GBP">GBP</option>
+                <option value="SAR">SAR</option>
+                <option value="AED">AED</option>
+                <option value="QAR">QAR</option>
+                <option value="KWD">KWD</option>
+                <option value="NGN">NGN</option>
+                <option value="XOF">XOF</option>
+            </select>
+            
+            <input type="number" id="amount" name="amount" placeholder="Amount" step="any" required>
+            
+            <div class="fees-box">
+                <div>Fee: <span id="fee">0.00</span></div>
+                <div>Total: <span id="total">0.00</span></div>
+            </div>
+            
+            <button type="submit">Continue Payment</button>
+        </form>
+    </section>
+
+    <section class="rates" id="rates">
+        <h2>Live Black Market Rates</h2>
+        <div class="rate-grid">
+            {% for currency, value in rates.items() %}
+            <div class="rate-card">
+                <h3>{{ currency }}</h3>
+                <p>{{ value }} GHS</p>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section class="trust-section">
+        <h2>Why Choose Adigini Remit?</h2>
+        <div class="trust-grid">
+            <div class="trust-card">
+                <h3>Fast Transfers</h3>
+                <p>Send money instantly to families and friends.</p>
+            </div>
+            <div class="trust-card">
+                <h3>Low Fees</h3>
+                <p>Better rates than traditional money transfer services.</p>
+            </div>
+            <div class="trust-card">
+                <h3>Secure Payments</h3>
+                <p>Protected by Paystack security infrastructure.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-section">
+        <div class="stat-card">
+            <h2>$2.5M+</h2>
+            <p>Transfers Processed</p>
+        </div>
+        <div class="stat-card">
+            <h2>15K+</h2>
+            <p>Happy Customers</p>
+        </div>
+        <div class="stat-card">
+            <h2>12</h2>
+            <p>Supported Countries</p>
+        </div>
+    </section>
+
+    <!-- Remapped to point straight into your centralized backend route wrapper -->
+    <a class="whatsapp-btn" href="/whatsapp" target="_blank" rel="noopener noreferrer">
+        WhatsApp Support
+    </a>
+
+    <footer>
+        <h2>Adigini Remit</h2>
+        <p>Fast African remittance platform.</p>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms</a>
+            <a href="#">Support</a>
+        </div>
+    </footer>
+
+    <script src="/static/js/app.js"></script>
+
+</body>
+</html>

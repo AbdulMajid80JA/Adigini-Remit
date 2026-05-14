@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Portal Secure Login - Adigini Remit</title>
+    
+    <!-- Unified Application Stylesheet Links -->
+    <link rel="stylesheet" href="/static/css/style.css">
+    
+    <!-- Specific Secure Gate Layout Extensions -->
+    <style>
+        .admin-page-wrapper {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .admin-secure-card {
+            width: 100%;
+            max-width: 480px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(0, 255, 204, 0.1);
+            padding: 50px 40px;
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .admin-secure-card:shadow-focus,
+        .admin-secure-card:hover {
+            border-color: rgba(0, 255, 204, 0.4);
+            box-shadow: 0 20px 50px rgba(0, 255, 204, 0.05);
+        }
+
+        .admin-header-block {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .admin-header-block h1 {
+            font-size: 32px;
+            font-weight: bold;
+            color: white;
+            letter-spacing: -0.5px;
+        }
+
+        .admin-highlight-gradient {
+            background: linear-gradient(90deg, #00ffcc, #00c896);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .admin-header-block p {
+            color: #9fb1c8;
+            font-size: 14px;
+            margin-top: 8px;
+        }
+
+        .security-badge-pill {
+            display: inline-block;
+            padding: 6px 14px;
+            background: rgba(0, 255, 204, 0.08);
+            color: #00ffcc;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 15px;
+        }
+
+        .form-group-layer {
+            position: relative;
+            margin-bottom: 22px;
+        }
+
+        .form-group-layer label {
+            display: block;
+            color: #a8bdd6;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group-layer input {
+            width: 100%;
+            padding: 16px 18px;
+            background: #0d1c2f;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 14px;
+            color: white;
+            font-size: 15px;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .form-group-layer input:focus {
+            border-color: #00ffcc;
+            background: #0f2238;
+            box-shadow: 0 0 10px rgba(0, 255, 204, 0.1);
+        }
+
+        .admin-submit-btn {
+            width: 100%;
+            padding: 18px;
+            border: none;
+            border-radius: 14px;
+            background: linear-gradient(90deg, #00ffcc, #00c896);
+            color: #06111f;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+            margin-top: 10px;
+        }
+
+        .admin-submit-btn:hover {
+            opacity: 0.95;
+        }
+
+        .admin-submit-btn:active {
+            transform: scale(0.98);
+        }
+
+        .portal-back-link {
+            display: inline-block;
+            margin-top: 25px;
+            color: #9fb1c8;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s ease;
+        }
+
+        .portal-back-link:hover {
+            color: #00ffcc;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Ambient Visual Glow Component -->
+    <div class="bg-blur"></div>
+
+    <!-- Main Centralized Layout Wrapper -->
+    <div class="admin-page-wrapper">
+        
+        <div class="admin-secure-card">
+            
+            <!-- Branding & Status Header -->
+            <div class="admin-header-block">
+                <span class="security-badge-pill">🔒 Encrypted Gateway</span>
+                <h1>Adigini <span class="admin-highlight-gradient">Portal</span></h1>
+                <p>Authorized personnel systems access terminal</p>
+            </div>
+
+            <!-- Form Action Route Pipeline -->
+            <form action="/admin-login" method="POST">
+                
+                <!-- Identifier Credential Input Block -->
+                <div class="form-group-layer">
+                    <label for="username">ADMIN USERNAME</label>
+                    <input type="text" id="username" name="username" placeholder="Enter admin identifier" autocomplete="username" required>
+                </div>
+
+                <!-- Secret Credential Input Block -->
+                <div class="form-group-layer">
+                    <label for="password">SECURE KEYCODE</label>
+                    <input type="password" id="password" name="password" placeholder="••••••••••••" autocomplete="current-password" required>
+                </div>
+
+                <!-- Execution Trigger Button -->
+                <button type="submit" class="admin-submit-btn">
+                    Authenticate & Initialize
+                </button>
+
+            </form>
+
+            <!-- Navigation Fallback Link -->
+            <div style="text-align: center;">
+                <a href="/" class="portal-back-link">← Return to Public Terminal</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

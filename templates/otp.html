@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Verification Gateway - Adigini Remit</title>
+    
+    <!-- Unified Application Stylesheet Links -->
+    <link rel="stylesheet" href="/static/css/style.css">
+    
+    <!-- Specific Verification Card Layout Extensions -->
+    <style>
+        .otp-page-wrapper {
+            min-height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .otp-card {
+            width: 100%;
+            max-width: 480px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(0, 255, 204, 0.1);
+            padding: 50px 40px;
+            border-radius: 30px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .otp-highlight-gradient {
+            background: linear-gradient(90deg, #00ffcc, #00c896);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+        }
+
+        .otp-badge-pill {
+            display: inline-block;
+            padding: 6px 14px;
+            background: rgba(0, 255, 204, 0.08);
+            color: #00ffcc;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+        }
+
+        .otp-inputs-row {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .otp-field {
+            width: 60px;
+            height: 60px;
+            background: #0d1c2f;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 14px;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .otp-field:focus {
+            border-color: #00ffcc;
+            background: #0f2238;
+            box-shadow: 0 0 10px rgba(0, 255, 204, 0.15);
+        }
+
+        .otp-submit-btn {
+            width: 100%;
+            padding: 18px;
+            border: none;
+            border-radius: 14px;
+            background: linear-gradient(90deg, #00ffcc, #00c896);
+            color: #06111f;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .otp-submit-btn:hover { opacity: 0.95; }
+        .otp-submit-btn:active { transform: scale(0.98); }
+
+        .resend-text {
+            margin-top: 25px;
+            color: #9fb1c8;
+            font-size: 14px;
+        }
+
+        .resend-link {
+            color: #00ffcc;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-blur"></div>
+
+    <div class="otp-page-wrapper">
+        <div class="otp-card">
+            
+            <span class="otp-badge-pill">🔒 Security Check</span>
+            <h1 style="font-size: 32px; margin-bottom: 10px;">Enter <span class="otp-highlight-gradient">OTP Code</span></h1>
+            <p style="color: #9fb1c8; font-size: 15px; line-height: 1.5;">
+                We sent a 4-digit security challenge verification token directly to your device via SMS pipeline.
+            </p>
+
+            <!-- Verification Action Route -->
+            <form action="/success" method="GET">
+                <div class="otp-inputs-row">
+                    <input type="text" class="otp-field" maxlength="1" required aria-label="Digit 1">
+                    <input type="text" class="otp-field" maxlength="1" required aria-label="Digit 2">
+                    <input type="text" class="otp-field" maxlength="1" required aria-label="Digit 3">
+                    <input type="text" class="otp-field" maxlength="1" required aria-label="Digit 4">
+                </div>
+
+                <button type="submit" class="otp-submit-btn">
+                    Verify & Finalize Order
+                </button>
+            </form>
+
+            <p class="resend-text">
+                Didn't receive the passcode? <a href="#" class="resend-link">Resend Token</a>
+            </p>
+
+        </div>
+    </div>
+
+    <!-- UI Autofocus & Navigation helper script logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const inputs = document.querySelectorAll('.otp-field');
+            
+            inputs.forEach((input, index) => {
+                // Focus shifting code optimization rule
+                input.addEventListener('input', (e) => {
+                    if (e.target.value.length === 1 && index < inputs.length - 1) {
+                        inputs[index + 1].focus();
+                    }
+                });
+
+                input.addEventListener('keydown', (e) => {
+                    if (e.key === 'Backspace' && e.target.value.length === 0 && index > 0) {
+                        inputs[index - 1].focus();
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

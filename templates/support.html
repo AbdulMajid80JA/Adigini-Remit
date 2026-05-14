@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instant Chat Support & FAQ - Adigini Remit</title>
+    
+    <!-- Unified Application Master Stylesheet -->
+    <link rel="stylesheet" href="/static/css/style.css">
+    
+    <!-- Specific Premium Chat Portal & FAQ Design Extensions -->
+    <style>
+        .support-page-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 50px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Responsive Desktop Split Side-by-Side View */
+        @media (min-width: 992px) {
+            .support-page-grid {
+                grid-template-columns: 450px 1fr;
+                align-items: start;
+            }
+        }
+
+        .chat-hub-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(0, 255, 204, 0.1);
+            padding: 40px 30px;
+            border-radius: 30px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .whatsapp-brand-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(37, 211, 102, 0.1);
+            color: #25D366;
+            font-size: 40px;
+            line-height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 20px auto;
+            border: 1px solid rgba(37, 211, 102, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chat-highlight-gradient {
+            background: linear-gradient(90deg, #00ffcc, #00c896);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+        }
+
+        .chat-status-pill {
+            display: inline-block;
+            padding: 6px 14px;
+            background: rgba(37, 211, 102, 0.1);
+            color: #25D366;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+        }
+
+        .topic-selector-box {
+            background: #0d1c2f;
+            border-radius: 18px;
+            padding: 20px;
+            margin: 25px 0;
+            text-align: left;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+        }
+
+        .topic-option {
+            display: block;
+            width: 100%;
+            padding: 14px 16px;
+            margin-bottom: 10px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 10px;
+            color: #a8bdd6;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            text-align: left;
+        }
+
+        .topic-option:last-child { margin-bottom: 0; }
+        .topic-option:hover { border-color: #00ffcc; background: #0f2238; color: white; }
+
+        .action-chat-trigger {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            text-decoration: none;
+            border-radius: 14px;
+            background: #25D366;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            transition: all 0.2s ease;
+        }
+
+        .action-chat-trigger:hover {
+            opacity: 0.95;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+        }
+
+        /* =========================================================================
+           FAQ STRUCTURAL ACCORDION DESIGNS
+           ========================================================================= */
+        .faq-wrapper-panel h2 {
+            font-size: 32px;
+            color: white;
+            margin-bottom: 25px;
+            letter-spacing: -0.5px;
+        }
+
+        .faq-accordion-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            transition: border-color 0.3s ease;
+        }
+
+        .faq-accordion-item:hover {
+            border-color: rgba(0, 255, 204, 0.3);
+        }
+
+        /* Hidden HTML Native Control Toggle Checkboxes */
+        .faq-trigger-state {
+            display: none;
+        }
+
+        .faq-question-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 22px 25px;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .faq-arrow-indicator {
+            font-size: 18px;
+            color: #00ffcc;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-answer-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+            background: #0a1421;
+        }
+
+        .faq-answer-content p {
+            padding: 0 25px 22px 25px;
+            color: #b6c8dc;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* Dynamic CSS Selector Matching Open Trigger Action State Flags */
+        .faq-trigger-state:checked ~ .faq-answer-content {
+            max-height: 200px; /* Expands smoothly based on height calculations */
+        }
+
+        .faq-trigger-state:checked ~ .faq-question-label .faq-arrow-indicator {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-blur"></div>
+
+    <div class="support-page-grid">
+        
+        <!-- Left Side Layout Column: Priority Instant Support Hub -->
+        <div class="chat-hub-card">
+            <div class="whatsapp-brand-icon">
+                <svg width="35" height="35" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.963C16.528 2.01 14.069.993 11.452.993 6.016.993 1.593 5.363 1.59 10.793c-.001 1.702.461 3.36 1.336 4.815L1.921 21.2l5.861-1.526z"/>
+                </svg>
+            </div>
+
+            <span class="chat-status-pill">🟢 Staff Active</span>
+            <h1 style="font-size: 28px; margin-bottom: 10px;">WhatsApp <span class="chat-highlight-gradient">Helpdesk</span></h1>
+            <p style="color: #9fb1c8; font-size: 14px; line-height: 1.5;">
+                Select your transfer query category below to open a direct secure messaging channel with our priority support team.
+            </p>
+
+            <div class="topic-selector-box">
+                <span style="display:block; font-size:11px; color:#6b7d96; font-weight:bold; text-transform:uppercase; margin-bottom:12px; letter-spacing:0.5px;">Select Support Topic:</span>
+                <button class="topic-option" onclick="updateMessage('Delayed Transfer Help')">⏱️ My Transfer is Delayed</button>
+                <button class="topic-option" onclick="updateMessage('Rate & Currency Inquiry')">💱 Live Black Market Rate Inquiry</button>
+                <button class="topic-option" onclick="updateMessage('Verification Setup Assistance')">👤 Identity Verification Help</button>
+            </div>
+
+            <!-- Absolute Web URL Link to Force Outbound Redirection Exiting Local Server Paths -->
+            <a id="whatsapp-link" href="https://wa.me" class="action-chat-trigger" target="_blank" rel="noopener noreferrer">
+                Launch Secure Chat Terminal
+            </a>
+        </div>
+
+        <!-- Right Side Layout Column: Dynamic Accordion FAQ Grid System -->
+        <div class="faq-wrapper-panel">
+            <h2>Frequently Asked <span class="chat-highlight-gradient">Questions</span></h2>
+            
+            <!-- Accordion Slot 01 -->
+            <div class="faq-accordion-item">
+                <input type="checkbox" id="faq-1" class="faq-trigger-state">
+                <label for="faq-1" class="faq-question-label">
+                    <span>How fast are remittance transfers processed?</span>
+                    <span class="faq-arrow-indicator">▾</span>
+                </label>
+                <div class="faq-answer-content">
+                    <p>Most transactions clear within 3 to 5 minutes. Funds are routed directly into localized mobile money structures or banking wallets automatically without hold intervals.</p>
+                </div>
+            </div>
+
+            <!-- Accordion Slot 02 -->
+            <div class="faq-accordion-item">
+                <input type="checkbox" id="faq-2" class="faq-trigger-state">
+                <label for="faq-2" class="faq-question-label">
+                    <span>Are your currency conversion rates fixed?</span>
+                    <span class="faq-arrow-indicator">▾</span>
+                </label>
+                <div class="faq-answer-content">
+                    <p>No. We operate a highly responsive, database-driven black market exchange rate tracking engine. Rates adjust live matching current market corridor liquidity flows.</p>
+                </div>
+            </div>
+
+            <!-- Accordion Slot 03 -->
+            <div class="faq-accordion-item">
+                <input type="checkbox" id="faq-3" class="faq-trigger-state">
+                <label for="faq-3" class="faq-question-label">
+                    <span>Is the payment check out process secure?</span>
+                    <span class="faq-arrow-indicator">▾</span>
+                </label>
+                <div class="faq-answer-content">
+                    <p>Absolutely. We use bank-grade end-to-end SSL protection architecture and process financial credentials securely through standard Paystack system API endpoints.</p>
+                </div>
+            </div>
+
+            <!-- Accordion Slot 04 -->
+            <div class="faq-accordion-item">
+                <input type="checkbox" id="faq-4" class="faq-trigger-state">
+                <label for="faq-4" class="faq-question-label">
+                    <span>What are your transfer processing fees?</span>
+                    <span class="faq-arrow-indicator">▾</span>
+                </label>
+                <div class="faq-answer-content">
+                    <p>We charge a transparent, fixed baseline 3% platform operation fee per transaction. There are absolutely no hidden costs or unmapped intermediary merchant deductions.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Outbound Address Compiler Script Logic -->
+    <script>
+        function updateMessage(topic) {
+            // Replaced bracket strings and space text vectors safely for external protocol parsing
+            const basePhone = "233000000000";
+            const textString = `Hello Adigini Remit support team, I need priority assistance regarding: [${topic}].`;
+            const encodedText = encodeURIComponent(textString);
+            
+            // Forces precise external exit redirection using clean https:// web rules
+            const chatBtn = document.getElementById('whatsapp-link');
+            chatBtn.href = `wa.me{basePhone}?text=${encodedText}`;
+            
+            alert(`Topic updated: "${topic}". Click the launch button to enter WhatsApp.`);
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Adigini Remit</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        .contact-hero-container { text-align: center; max-width: 800px; margin: 0 auto 50px auto; }
+        .contact-highlight-gradient { background: linear-gradient(90deg, #00ffcc, #00c896); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 800; }
+        .contact-accent-pill { display: inline-block; padding: 6px 14px; background: rgba(0, 255, 204, 0.1); color: #00ffcc; border-radius: 20px; font-size: 12px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+        .contact-dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; }
+        .contact-card-ui { background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(0, 255, 204, 0.1); padding: 40px 30px; border-radius: 24px; text-align: center; transition: all 0.3s ease; text-decoration: none; color: white; display: block; }
+        .contact-card-ui:hover { transform: translateY(-5px); border-color: #00ffcc; box-shadow: 0 10px 30px rgba(0, 255, 204, 0.15); background: rgba(255, 255, 255, 0.06); }
+        .contact-icon-frame { font-size: 40px; margin-bottom: 20px; }
+        .contact-card-ui h3 { font-size: 24px; margin-bottom: 10px; color: white; }
+        .contact-card-ui p { font-size: 16px; color: #9fb1c8; margin-bottom: 25px; line-height: 1.5; }
+        .contact-action-link { display: inline-block; padding: 12px 24px; background: #0d1c2f; color: #00ffcc; border: 1px solid rgba(0, 255, 204, 0.3); border-radius: 12px; font-weight: bold; font-size: 15px; transition: all 0.2s ease; }
+        .contact-card-ui:hover .contact-action-link { background: linear-gradient(90deg, #00ffcc, #00c896); color: #06111f; border-color: transparent; }
+        .availability-banner { margin-top: 60px; text-align: center; padding: 30px; background: rgba(0, 255, 204, 0.03); border: 1px dashed rgba(0, 255, 204, 0.2); border-radius: 20px; }
+        .availability-banner h4 { font-size: 20px; color: #00ffcc; margin-bottom: 8px; }
+        .availability-banner p { color: #aabed7; font-size: 15px; }
+    </style>
+</head>
+<body>
+
+    <div class="bg-blur"></div>
+
+    <section class="simple-page">
+        <div class="contact-hero-container">
+            <span class="contact-accent-pill">24/7 Global Desk</span>
+            <h1>Get In <span class="contact-highlight-gradient">Touch</span></h1>
+            <p style="margin-top: 20px; color: #9fb1c8; font-size: 20px; line-height: 1.6;">
+                Have questions about live transfer rates, business pipelines, or payment security? Our priority support channels connect you instantly to human operators.
+            </p>
+        </div>
+
+        <div class="contact-dashboard-grid">
+            <!-- Remapped directly to target your new safe dynamic endpoint layout -->
+            <a href="/whatsapp" target="_blank" rel="noopener noreferrer" class="contact-card-ui">
+                <div class="contact-icon-frame">💬</div>
+                <h3>WhatsApp Support</h3>
+                <p>Chat directly with an agent for instant trade approvals, verification help, and transactional issues.</p>
+                <div class="contact-action-link">Open Live Chat</div>
+            </a>
+
+            <a href="mailto:support@adiginiremit.com" class="contact-card-ui">
+                <div class="contact-icon-frame">✉️</div>
+                <h3>Email Helpdesk</h3>
+                <p>Send business inquiries, partnership requests, admin complaints, or transaction receipts straight to our main queue.</p>
+                <div class="contact-action-link">Send Message</div>
+            </a>
+        </div>
+
+        <div class="availability-banner">
+            <h4>🟢 Systems Fully Operational</h4>
+            <p>Support Hours: 24/7/365 Continuous Coverage. Average human response latency is under 3 minutes.</p>
+        </div>
+    </section>
+
+    <!-- Global Float Hook Sync -->
+    <a class="whatsapp-btn" href="/whatsapp" target="_blank" rel="noopener noreferrer">
+        WhatsApp Support
+    </a>
+
+<div class="footer-links">
+    <a href="/privacy">Privacy Policy</a>
+    <a href="/terms">Terms</a>
+    <a href="/support">Support</a>
+</div>
+
+</body>
+</html>
